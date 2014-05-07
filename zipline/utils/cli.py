@@ -119,7 +119,7 @@ def parse_cell_magic(line, cell):
     local_namespace = args.pop('local_namespace', False)
     # By default, execute inside IPython namespace
     if not local_namespace:
-        args['namespace'] = get_ipython().user_ns
+        args['namespace'] = get_ipython().user_ns # flake8: noqa
 
     perf = run_algo(print_algo=False, algo_text=cell, **args)
 
@@ -127,7 +127,7 @@ def parse_cell_magic(line, cell):
     # variable instead
     output_var_name = args.pop('output', None)
     if output_var_name is not None:
-        get_ipython().user_ns[output_var_name] = perf
+        get_ipython().user_ns[output_var_name] = perf # flake8: noqa
 
 
 def run_pipeline(print_algo=True, **kwargs):
